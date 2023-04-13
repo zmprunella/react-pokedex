@@ -1,38 +1,131 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+
+.pokedex {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1rem;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.pokemon-card {
+  background-color: #e6e6e6e6;
+  border: 2px solid #00000070;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  padding: 1.9rem;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pokemon-card:hover {
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.pokemon-types {
+  margin-top: 1rem;
+}
+
+.pokemon-types span {
+  border: 1.9px solid #000000;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 0.4rem 0.5rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.pokemon-type:hover {
+  filter: brightness(180%);
+  cursor: zoom-in;
+}
+
+.search-bar {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.search-bar input {
+  padding: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  margin-right: 0.5rem;
+}
+
+.search-bar button {
+  padding: 0.5rem;
+  border: 2px solid #424242;
+  background-color: #005eff;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #7c8dff;
+}
+
+.pokedex-single {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(80vh - 100px);
+  color: #000000;
+}
+
+.back-button {
+  background-color: #000000ae;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.back-button:hover {
+  background-color: #5c6bc0;
+}
+
+.single-card-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.home-button {
+  background-color: #005eff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  border: 2px solid #424242;
+}
+
+.home-button:hover {
+  background-color: #5c6bc0;
+}
+
+.home-button-container {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  margin-bottom: 16px; /* Add some spacing below the button */
 }
