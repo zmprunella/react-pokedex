@@ -50,8 +50,21 @@ function App() {
   const handleCardClick = async (name, url) => {
     // Extract the Pokemon ID from the URL
     const id = url.split("/")[url.split("/").length - 2];
-    // Call handleSearch with the extracted ID
-    handleSearch(id);
+    try {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${id}`
+      );
+      const { stats, sprites } = response.data;
+
+      setSelectedPokemon({
+        name: name,
+        url: url,
+        stats: stats,
+        sprite: sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon details:", error);
+    }
   };
 
   const handleSearch = async (id) => {
@@ -89,6 +102,9 @@ function App() {
               name={selectedPokemon.name}
               url={selectedPokemon.url}
               singleView // Add this new prop
+              stats={selectedPokemon.stats} // Pass the stats
+              sprite={selectedPokemon.sprite} // Pass the sprite
+              onTypeClick={handleTypeClick} // Add this prop
             />
             <button className="back-button" onClick={handleBackButtonClick}>
               Back to List

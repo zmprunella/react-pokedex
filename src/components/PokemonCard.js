@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const PokemonCard = ({ name, url, onCardClick, onTypeClick, singleView }) => {
+const PokemonCard = ({
+  name,
+  url,
+  onCardClick,
+  onTypeClick,
+  singleView,
+  stats,
+  sprite,
+}) => {
   const [pokemonInfo, setPokemonInfo] = useState({});
 
   useEffect(() => {
@@ -49,13 +57,16 @@ const PokemonCard = ({ name, url, onCardClick, onTypeClick, singleView }) => {
     <div
       className="pokemon-card"
       onClick={() => {
-        if (typeof onCardClick === "function") {
+        if (!singleView && typeof onCardClick === "function") {
           onCardClick(name, url);
         }
       }}
     >
       <h2>{name.toUpperCase()}</h2>
-      <img src={pokemonInfo.sprites?.front_default} alt={name} />
+      <img
+        src={singleView ? sprite : pokemonInfo.sprites?.front_default}
+        alt={name}
+      />
       {pokemonInfo && pokemonInfo.types ? (
         <div className="pokemon-types">
           {pokemonInfo.types.map((typeObj, index) => (
@@ -65,13 +76,23 @@ const PokemonCard = ({ name, url, onCardClick, onTypeClick, singleView }) => {
               style={{ backgroundColor: getTypeColor(typeObj.type.name) }}
               onClick={(e) => {
                 e.stopPropagation(); // Prevent triggering the card's onClick event
-                if (typeof onTypeClick === "function") {
+                if (!singleView && typeof onTypeClick === "function") {
                   onTypeClick(typeObj.type.name);
                 }
               }}
             >
               {typeObj.type.name}
             </span>
+          ))}
+        </div>
+      ) : null}
+      {singleView && stats ? (
+        <div className="pokemon-stats">
+          {stats.map((stat, index) => (
+            <div key={index} className="stat">
+              <span className="stat-name">{stat.stat.name}:</span>{" "}
+              {stat.base_stat}
+            </div>
           ))}
         </div>
       ) : null}

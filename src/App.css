@@ -22,7 +22,7 @@ body {
   border: 2px solid #00000070;
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  padding: 1.9rem;
+  padding: 1rem;
   text-align: center;
 }
 .pokemon-card:hover {
@@ -36,13 +36,16 @@ body {
 
 .pokemon-types {
   margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .pokemon-types span {
   border: 1.9px solid #000000;
   color: #ffffff;
   border-radius: 8px;
-  padding: 0.4rem 0.5rem;
+  padding: 0.3rem 0.3rem;
   display: inline-block;
   margin-right: 0.5rem;
 }
@@ -67,8 +70,8 @@ body {
 
 .search-bar button {
   padding: 0.5rem;
-  border: 2px solid #424242;
-  background-color: #005eff;
+  border: 1.9px solid #000000;
+  background-color: #0091ff;
   color: #fff;
   border-radius: 10px;
   cursor: pointer;
@@ -87,9 +90,9 @@ body {
 }
 
 .back-button {
-  background-color: #000000ae;
+  background-color: #0091ff;
+  border: 1.9px solid #000000;
   color: #fff;
-  border: none;
   border-radius: 5px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -106,10 +109,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .home-button {
-  background-color: #005eff;
+  background-color: #0091ff;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -128,4 +135,30 @@ body {
   display: flex;
   justify-content: center;
   margin-bottom: 16px; /* Add some spacing below the button */
+}
+
+.pokemon-stats {
+  display: flex;
+  flex-direction: column;
+  background-color: #dfd6e8;
+  border: 1.5px solid #00000070;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.stat {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-right: 80px;
+  font-weight: bold;
+}
+
+.stat-name {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 2px;
 }
